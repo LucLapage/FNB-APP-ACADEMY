@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator App</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" id="inputBox" value="0"></td>
+        </tr>
+        <tr>
+            <td onclick="btnPressed(7)" class="btnNumber">7</td>
+            <td onclick="btnPressed(8)" class="btnNumber">8</td>
+            <td onclick="btnPressed(9)" class="btnNumber">9</td>
+            <td onclick="btnOperator('x')" class="btnOperator">x</td>
+        </tr>
+        <tr>
+            <td onclick="btnPressed(4)" class="btnNumber">4</td>
+            <td onclick="btnPressed(5)" class="btnNumber">5</td>
+            <td onclick="btnPressed(6)" class="btnNumber">6</td>
+            <td onclick="btnOperator('-')" class="btnOperator">-</td>
+        </tr>
+        <tr>
+            <td onclick="btnPressed(1)" class="btnNumber">1</td>
+            <td onclick="btnPressed(2)" class="btnNumber">2</td>
+            <td onclick="btnPressed(3)" class="btnNumber">3</td>
+            <td onclick="btnOperator('+')" class="btnOperator">+</td>
+        </tr>
+        <tr>
+            <td colspan="2" onclick="btnPressed(0)" class="btnNumber">0</td>
+            <td onclick="clearInput()" class="btnClear">AC</td>
+            <td onclick="btnOperator('/')" class="btnOperator">/</td>
+        </tr>
+        <tr>
+            <td colspan="4" onclick="answer('=')" class="btnEquals">=</td>
+        </tr>
+    </table>
+    
+<script> 
+var newLine = true // Variable to track if a new line is being started
+var newOpertation;
+var num1;
+
+//Event handler to append the button value to the input box
+function btnPressed(button){
+    if(newLine){
+        document.getElementById("inputBox").value = button;
+        newLine = false;
+    }
+    else{
+var currentValue = document.getElementById("inputBox").value;
+     document.getElementById("inputBox").value = currentValue + button; 
+    } 
+}  
+//Event handler to clear the input box, when AC is pressed
+ function clearInput(){
+        document.getElementById("inputBox").value = "0";
+        newLine = true;
+    }
+//Event handler to perform the operation when an operator is pressed
+    function btnOperator(operation) {
+        newOpertation = operation;
+        newLine = true; // Set newLine to true to start a new input
+    num1= parseInt(document.getElementById("inputBox").value);
+    }
+//Event handler to calculate the result when '=' is pressed
+    function answer(){
+        var num2 = parseInt(document.getElementById("inputBox").value);
+        var result;
+        switch(newOpertation) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case 'x':
+                result = num1 * num2;
+                break;
+            case '/':
+                result = num1 / num2;
+                break;
+        }
+        document.getElementById("inputBox").value = result;
+        newLine = true; // Reset for the next operation
+        num1 = 0;
+    }
+</script>
+</body>
+</html>

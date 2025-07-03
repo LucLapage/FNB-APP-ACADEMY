@@ -1,0 +1,27 @@
+ table, td{border: 1px solid;
+  border-collapse: collapse;}
+
+.btnNumber{
+padding: 10px;
+  background-color: #e9ede9;
+  cursor: pointer;
+}
+.btnClear{
+  background-color: #c4c2c2;
+  cursor: pointer;
+}
+.btnOperator, .btnEquals{
+    padding: 10px;
+  background-color: #d33b2d;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+ .btnOperator, .btnNumber, .btnClear{
+  text-align: center;
+  font-weight: 700;
+}
+
+#inputBox{
+      padding: 10px;
+}
